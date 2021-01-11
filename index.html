@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <title>Unified Digital Experience - Dev sandbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+  <a id="start-va" href="#start" role="button">Start VA</a>
+  <a id="start-chat" href="#start" role="button">Start Chat</a>
+  <p>
+    Donec id elit non mi porta gravida at eget metus.
+    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+    Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+  </p>
+  <script type="text/javascript">
+    (function() {
+      'use strict';
+      var script = document.createElement('script');
+      script.id = "widget-loader";
+      script.async = "";
+      // UDE widget loader script
+      script.src = "//d1af033869koo7.cloudfront.net/frontends/files/js/widget-loader.js";
+      script.setAttribute('data-prechatdata', encodeURIComponent(JSON.stringify({
+        "vi": "52d805a4-37c9-4b87-8974-16d7856eb362"
+      })));
+      document.head.appendChild(script);
+      script.onload = script.onreadystatechange = function(e, isAbort) {
+        if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) {
+          script.onload = script.onreadystatechange = null;
+          if (!isAbort) {
+            window._tfs.init({
+              "appId": "default",
+              "workflow": "chat",
+              "forceCrossOrigin": false,
+              "workflowConfig": {
+                "chat": {
+                
+                  "assistAccountId": "answersseven-account-default", // Mandatory for workflow "chat"
+                  "assistCAEndpoint": "https://answersseven.ca.assist.staging.247-inc.net/en/ca",  // Mandatory for workflow "chat"
+                  "assistEndpoint": "https://answersseven.vs.assist.staging.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
+  		  "assistQueue": "answersseven-account-default-queue-SFQueue1"              
+                  /*
+                   "assistAccountId": "lnd-account-1", // Mandatory for workflow "chat"
+                  "assistCAEndpoint": "http://lnd.ca.dev.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
+                  "assistEndpoint": "http://lnd.vs.dev.assist.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
+                  "assistQueue": "test-default-account-default-queue-sut_queue1"  // Mandatory for workflow "chat" dev - lnd-queue-customer-support-social
+                 */
+                }},
+		"prechat": {
+                            "widgets": [
+                                {
+                                    "type": "input",
+                                    "inputType": "text",
+                                    "name": "FirstName",
+                                    "title": "First Name",
+                                    "id": "FirstName",
+                                },
+                                {
+                                    "type": "input",
+                                    "inputType": "text",
+                                    "name": "lastName",
+                                    "title": "Last Name",
+                                    "id": "lastName",
+                                },
+                                {
+                                    "type": "input",
+                                    "inputType": "text",
+                                    "name": "Email",
+                                    "title": "Email",
+                                    "id": "Email",
+                                },
+
+                                {
+                                    "type": "button",
+                                    "name": "submit",
+                                    "label": "Submit",
+                                    "colspan": 6,
+                                    "offset": 3,
+                                    "id": "btn_payment_077814",
+                                    "buttonType": "submit"
+                                }
+                            ]
+                        },
+                        "cards": [
+                            {
+                                "invoke": {
+                                    "title": "Provide SSN ",
+                                    "auto": true
+                                },
+                                "title": "Social Security Number",
+                                "isCES": false,
+                                "isExternal": false,
+                                "isPCF": false,
+                                "name": "ssn",
+                                "processOnServer": false,
+                                "type": "sliding",
+                                "pages": [
+                                    {
+                                        "name": "Page-0",
+                                        //"confidential": true,
+                                        //"secureStorageModes": ["internal"],
+                                        "widgets": [
+                                            {
+                                                "type": "input",
+                                                "name": "ssn",
+                                                "title": "Social Security Number",
+                                                "disabled": false,
+                                                "colspan": 12,
+                                                "offset": 0,
+                                                "focusColor": "#EF8822",
+                                                "inputType": "text",
+                                                "id": "ssn_001"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "name": "btn_submit",
+                                                "buttonType": "submit",
+                                                "label": "Submit",
+                                                "colspan": 4,
+                                                "offset": 1,
+                                                "id": "ssn_002"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "name": "btn_cancel",
+                                                "buttonType": "cancel",
+                                                "label": "Cancel",
+                                                "colspan": 4,
+                                                "offset": 3,
+                                                "id": "ssn_003"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+            });
+          }
+        }
+      };
+      document.getElementById("start-chat").onclick = function() {
+        window._tfs.startInteraction();
+      }
+      // start VA with escalate to chat
+      document.getElementById("start-va").onclick = function() {
+        window._tfs.startInteraction({
+          "workflow": "va",
+          "workflowConfig": {
+            "va": {
+              "vaApiKey":"wut7mQd55eNBCwtn", // Mandatory for workflow "va"
+              "vaEndpoint": "http://stable.api.sv2.247-inc.net/v1/virtualagents/clients/247inc/applications/superretail" ,  // Mandatory for workflow "va"
+              "vaPostParameters": {
+                "scxml": "http://path/to/your/scxml.scxml"  // In case you want to quickly do dev iterations on scxml, DO NOT USE for production deployments
+              }
+            }
+          }
+        });
+      }
+    })();
+    window.SN = {};
+    SN.trackEvent = function() {
+        console.log(arguments);
+    }
+  </script>
+</body>
+</html>
