@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="pragma" content="no-cache">
-  <title>Demo-CitizensBank Chat</title>
+  <title>Unified Digital Experience - Dev sandbox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
-  <img src="Citizens.png" alt="Citizens" id="myImage">
+  <a id="start-va" href="#start" role="button">Start VA</a>
+  <a id="start-chat" href="#start" role="button">Start Chat</a>
+  <p>
+    Donec id elit non mi porta gravida at eget metus.
+    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+    Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+  </p>
   <script type="text/javascript">
     (function() {
       'use strict';
@@ -31,10 +37,10 @@
               "workflowConfig": {
                 "chat": {
                 
-                  "assistAccountId": "tfsdemo-account-default", // Mandatory for workflow "chat"
-                  "assistCAEndpoint": "https://tfsdemo.ca.assist.staging.247-inc.net/en/ca",  // Mandatory for workflow "chat"
-                  "assistEndpoint": "https://tfsdemo.vs.assist.staging.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
-                  "assistQueue": "tfsdemo-account-default-queue-default-queue"           
+                  "assistAccountId": "att-account-default", // Mandatory for workflow "chat"
+                  "assistCAEndpoint": "https://att.ca.assist.staging.247-inc.net/en/ca",  // Mandatory for workflow "chat"
+                  "assistEndpoint": "https://att.vs.assist.staging.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
+                  "assistQueue": "att-account-default-queue-default-queue"           
                   /*
                    "assistAccountId": "lnd-account-1", // Mandatory for workflow "chat"
                   "assistCAEndpoint": "http://lnd.ca.dev.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
@@ -134,8 +140,23 @@
           }
         }
       };
-      document.getElementById("myImage").onclick = function() {
+      document.getElementById("start-chat").onclick = function() {
         window._tfs.startInteraction();
+      }
+      // start VA with escalate to chat
+      document.getElementById("start-va").onclick = function() {
+        window._tfs.startInteraction({
+          "workflow": "va",
+          "workflowConfig": {
+            "va": {
+              "vaApiKey":"wut7mQd55eNBCwtn", // Mandatory for workflow "va"
+              "vaEndpoint": "http://stable.api.sv2.247-inc.net/v1/virtualagents/clients/247inc/applications/superretail" ,  // Mandatory for workflow "va"
+              "vaPostParameters": {
+                "scxml": "http://path/to/your/scxml.scxml"  // In case you want to quickly do dev iterations on scxml, DO NOT USE for production deployments
+              }
+            }
+          }
+        });
       }
     })();
     window.SN = {};
