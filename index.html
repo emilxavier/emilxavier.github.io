@@ -36,10 +36,18 @@
               "workflowConfig": {
                 "chat": {
                 
-                  "assistAccountId": "ecsandboxtwo-account-default", // Mandatory for workflow "chat"
+                  "assistAccountId": "bjs-account-default", // Mandatory for workflow "chat"
+                  "assistCAEndpoint": "https://bjs.ca.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
+                  "assistEndpoint": "https://bjs.vs.assist.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
+                  "assistQueue": "bjs-account-default-queue-BJS_Sync_TTA"
+
+
+			/*
+                     "assistAccountId": "ecsandboxtwo-account-default", // Mandatory for workflow "chat"
                   "assistCAEndpoint": "https://ecsandboxtwo.ca.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
                   "assistEndpoint": "https://ecsandboxtwo.vs.assist.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
                   "assistQueue": "ecsandboxtwo-account-default-queue-telcoentertainment"
+		  */
 
                   /*  
                    "salesdemo-account-default-queue-AgentAssist1"  // Mandatory for workflow "chat" QA - test-default-account-default-queue-sn2
