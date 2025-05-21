@@ -9,7 +9,7 @@
 </head>
 <body>
   <a id="start-va" href="#start" role="button">Start VA</a>
-  <a id="start-chat" href="#start" role="button">Start ECSANDBOXTWO Chat</a>
+  <a id="start-chat" href="#start" role="button">Start siriuscanada Chat</a>
   <p>
     Generate test chat
   </p>
@@ -35,12 +35,19 @@
               "forceCrossOrigin": false,
               "workflowConfig": {
                 "chat": {
-                
+		"assistAccountId": "siriuscanada-account-default", // Mandatory for workflow "chat"
+                  "assistCAEndpoint": "https://siriuscanada.ca.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
+                  "assistEndpoint": "https://siriuscanada.vs.assist.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
+                  "assistQueue": "siriuscanada-account-default-queue-default-queue"
+			
+			
+			
+                /* BJs config 
                   "assistAccountId": "bjs-account-default", // Mandatory for workflow "chat"
                   "assistCAEndpoint": "https://bjs.ca.assist.247-inc.net/en/ca",  // Mandatory for workflow "chat"
                   "assistEndpoint": "https://bjs.vs.assist.247-inc.net/cb/vs",  // Mandatory for workflow "chat"
                   "assistQueue": "bjs-account-default-queue-BJS_Sync_TTA"
-
+		*/
 
 			/*
                      "assistAccountId": "ecsandboxtwo-account-default", // Mandatory for workflow "chat"
